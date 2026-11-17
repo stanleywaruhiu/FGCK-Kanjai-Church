@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons | FGCK Kanjai</title>
+    <link rel="icon" type="image/png" href="IMAGES/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+            margin-top: 12px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .toggle-media-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #4a6fa5;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .toggle-media-btn:hover { background: #166088; }
+        .sermon-media { margin-top: 12px; }
+        .sermon-media audio {
+            width: 100%;
+            margin-top: 12px;
+            border-radius: 6px;
+        }
+        .sermon-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sermon-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .sermon-image-placeholder {
+            height: 140px;
+            background: #2c3e50;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .sermon-content { padding: 18px; }
+        .sermon-content h3 {
+            font-family: 'Merriweather', serif;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        .sermon-meta {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .sermon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        .sermon-search { max-width: 500px; margin: 0 auto 20px; }
+        .sermon-search input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .featured-sermon {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 24px;
+            align-items: center;
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .featured-sermon-info h3 {
+            font-family: 'Merriweather', serif;
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        @media (max-width: 768px) {
+            .grid-2-col,
+            .featured-sermon { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <img src="IMAGES/FGCK.png" alt="FGCK Kanjai Logo" class="logo-img">
+            <div>
+                <h1>FGCK Kanjai</h1>
+                <p>Faith • Hope • Community</p>
+            </div>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">☰</button>
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="ministries.html">Ministries</a></li>
+                <li><a href="sermons.html" class="active">Sermons</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="giving.html">Giving</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container grid-2-col" style="align-items: center;">
+            <div>
+                <img src="IMAGES/bible.jpg" alt="Open Bible"
+                     style="width:100%; max-height:500px; object-fit:cover; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.2);">
+            </div>
+            <div>
+                <h2>Feed Your Spirit</h2>
+                <p style="font-size:1.1rem; line-height:1.8; color:var(--text-light, #555);">
+                    "Your word is a lamp for my feet, a light on my path." — Psalm 119:105
+                </p>
+                <p style="font-size:1.1rem; line-height:1.8; color:var(--text-light, #555); margin-top:15px;">
+                    Missed a Sunday service? Browse our sermon archive, listen to audio recordings, or watch the latest video messages.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Latest Sermon</h2>
+            <div class="featured-sermon">
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/xtSnD7SrcCs"
+                        title="Walking in Faith"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="featured-sermon-info">
+                    <h3>Walking in Faith</h3>
+                    <p class="sermon-meta">Dr. Charles Stanley | 2022</p>
+                    <p><strong>Scripture:</strong> Genesis 12:1-7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Sermon Archive</h2>
+
+            <div class="sermon-search">
+                <input type="text" id="sermonSearch" placeholder="Search sermons by title or speaker...">
+            </div>
+
+            <div class="sermon-grid" id="sermonList">
+
+                <!-- ===== CARD 1: VIDEO — The Power of Prayer ===== -->
+                <div class="sermon-card" data-title="The Power of Prayer" data-speaker="Pastor [Name]">
+                    <div class="sermon-image-placeholder">Video</div>
+                    <div class="sermon-content">
+                        <h3>The Power of Prayer</h3>
+                        <p class="sermon-meta"></p>
+
+                        <button class="toggle-media-btn" onclick="toggleMedia(this)">
+                            Watch Video
+                        </button>
+
+                        <div class="sermon-media" style="display:none;">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/uULY8AB9SSk"
+                                    title="The Power of Prayer"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== CARD 2: HYMN VIDEO — What a Friend We Have in Jesus ===== -->
+                <div class="sermon-card" data-title="What a Friend We Have in Jesus" data-speaker="Lydia Walker">
+                    <div class="sermon-image-placeholder" style="background-color:#d4af37;">
+                         Hymn
+                    </div>
+                    <div class="sermon-content">
+                        <h3>What a Friend We Have in Jesus</h3>
+                        <p class="sermon-meta">Lydia Walker | Acoustic Hymns</p>
+
+                        <button class="toggle-media-btn" onclick="toggleMedia(this)">
+                             Watch Hymn
+                        </button>
+
+                        <div class="sermon-media" style="display:none;">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/TAyaXdvvbGU"
+                                    title="What A Friend We Have In Jesus — Lydia Walker"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 FGCK Kanjai Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        function toggleMedia(btn) {
+            const media = btn.nextElementSibling;
+            const isOpen = media.style.display === 'block';
+
+            document.querySelectorAll('.sermon-media').forEach(function (m) {
+                m.style.display = 'none';
+                const f = m.querySelector('iframe');
+                if (f && f.src) f.src = f.src;
+                const a = m.querySelector('audio');
+                if (a) a.pause();
+            });
+
+            document.querySelectorAll('.toggle-media-btn').forEach(function (b) {
+                if (b.dataset.originalLabel) {
+                    b.textContent = b.dataset.originalLabel;
+                }
+            });
+
+            if (!isOpen) {
+                media.style.display = 'block';
+                if (!btn.dataset.originalLabel) {
+                    btn.dataset.originalLabel = btn.textContent.trim();
+                }
+                btn.textContent = '✕ Close';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var searchInput = document.getElementById('sermonSearch');
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', function () {
+                var q = this.value.trim().toLowerCase();
+                document.querySelectorAll('#sermonList .sermon-card').forEach(function (card) {
+                    var text = (
+                        (card.dataset.title || '') + ' ' +
+                        (card.dataset.speaker || '') + ' ' +
+                        card.textContent
+                    ).toLowerCase();
+                    card.style.display = (q === '' || text.indexOf(q) !== -1) ? '' : 'none';
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('mobileMenuBtn');
+            var nav = document.getElementById('mainNav');
+            if (btn && nav) {
+                btn.addEventListener('click', function () {
+                    nav.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
